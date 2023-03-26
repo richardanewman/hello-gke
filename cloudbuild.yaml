@@ -7,7 +7,7 @@ steps:
       [
         "build",
         "-t",
-        "us-central1-docker.pkg.dev/$PROJECT_ID/docker-repo/httpd-image",
+        "us-central1-docker.pkg.dev/$PROJECT_ID/my-docker-repo/httpd-image",
         ".",
       ]
 
@@ -15,7 +15,10 @@ steps:
   #push the previously built image to the docker repo created in Step 0
   - name: "gcr.io/cloud-builders/docker"
     args:
-      ["push", "us-central1-docker.pkg.dev/$PROJECT_ID/docker-repo/httpd-image"]
+      [
+        "push",
+        "us-central1-docker.pkg.dev/$PROJECT_ID/my-docker-repo/httpd-image",
+      ]
 
   # Step 2
   # Publish the release
@@ -27,5 +30,5 @@ steps:
         gcloud deploy releases create release-$BUILD_ID
         --delivery-pipeline=hello-gke
         --region=us-central1
-        --images=hello-gke-image=us-central1-docker.pkg.dev/$PROJECT_ID/docker-repo/httpd-image
+        --images=hello-gke-image=us-central1-docker.pkg.dev/$PROJECT_ID/my-docker-repo/httpd-image
         --source=./
