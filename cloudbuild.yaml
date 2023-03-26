@@ -30,5 +30,5 @@ steps:
         gcloud deploy releases create release-$BUILD_ID
         --delivery-pipeline=hello-gke
         --region=us-central1
-        --images=hello-gke-image=us-central1-docker.pkg.dev/$PROJECT_ID/my-docker-repo/httpd-image
+        --images=hello-world-image=us-central1-docker.pkg.dev/$PROJECT_ID/my-docker-repo/httpd-image
         --source=./

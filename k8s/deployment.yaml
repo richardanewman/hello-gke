@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-gke-depl
+  name: hello-world-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-gke-app
+      app: hello-world-app
   template:
     metadata:
       labels:
-        app: hello-gke-app
+        app: hello-world-app
     spec:
       containers:
-        - name: hello-gke-app
-          image: hello-gke-image
+        - name: hello-world-app
+          image: hello-world-image
           ports:
             - containerPort: 80
